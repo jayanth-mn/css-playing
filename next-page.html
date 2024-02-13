@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Museum</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e0e0e0; /* Light gray background */
+        overflow: hidden;
+    }
+
+    #museum {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    #exhibits {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .train, .dragon, .aircraft {
+        font-size: 40px; /* Small size */
+        position: absolute;
+        opacity: 0.5; /* Reduced opacity */
+        animation-duration: 20s; /* Adjust duration as needed */
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .train {
+        top: calc(30% + 50px);
+        left: calc(20% + 50px);
+    }
+
+    .dragon {
+        top: calc(50% + 50px);
+        left: calc(50% + 50px);
+    }
+
+    .aircraft {
+        top: calc(70% + 50px);
+        left: calc(80% + 50px);
+    }
+
+    @keyframes moveTrain {
+        0% {
+            transform: translateX(-100%) translateY(calc(100vh * random()));
+        }
+        100% {
+            transform: translateX(100vw) translateY(calc(100vh * random()));
+        }
+    }
+
+    @keyframes moveAircraft {
+        0% {
+            transform: translateX(calc(100vw * random())) translateY(-100%);
+        }
+        100% {
+            transform: translateX(calc(100vw * random())) translateY(100vh);
+        }
+    }
+
+    @keyframes moveDragon {
+        0% {
+            transform: translateX(-100%) translateY(calc(100vh * random()));
+        }
+        100% {
+            transform: translateX(100vw) translateY(calc(100vh * random()));
+        }
+    }
+
+    #boy, #girl {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #next-button {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        font-size: 20px;
+        padding: 10px 20px;
+        background-color: #ff0000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div id="museum">
+    <div id="exhibits">
+        <div class="train">🚂</div>
+        <div class="dragon">🐉</div>
+        <div class="aircraft">✈️</div>
+    </div>
+    <button id="next-button">Next</button>
+    <img id="boy" src="boy_and_girl_animated.gif" alt="Boy" style="width: 100px;">
+    <img id="girl" src="girl_animated.gif" alt="Girl" style="width: 100px;">
+</div>
+<script>
+    document.getElementById('next-button').addEventListener('click', function() {
+        window.location.href = 'next_page1.html'; // Change to the URL of the next page
+    });
+</script>
+</body>
+</html>

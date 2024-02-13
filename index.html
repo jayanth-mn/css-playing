@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bus Stop</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8bbd0; /* Pinkish background */
+        overflow: hidden;
+    }
+
+    #bus-stop {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        position: relative;
+    }
+
+    #couple {
+        width: 200px;
+        position: relative;
+        animation: sway 2s ease-in-out infinite alternate;
+    }
+
+    #boy, #girl {
+        position: absolute;
+        bottom: 0;
+    }
+
+    #boy {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #girl {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    #boy-shape {
+        fill: white; /* Change boy's head shape color to white */
+    }
+
+    #bus-stop-img {
+        width: 600px;
+        height: 200px;
+        position: absolute;
+        bottom: 0;
+        animation: bus-stop-animation 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes sway {
+        0% { transform: rotateZ(2deg); }
+        100% { transform: rotateZ(-2deg); }
+    }
+
+    @keyframes bus-stop-animation {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+
+    .leaf {
+        position: absolute;
+        animation-name: fall;
+        animation-duration: 5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(0) rotateZ(0);
+        }
+        100% {
+            transform: translateY(100vh) rotateZ(720deg);
+        }
+    }
+
+    .heart {
+        position: absolute;
+        color: rgba(255, 64, 129, 0.7); /* Pink heart color with reduced opacity */
+        font-size: 30px; /* Bigger heart size */
+        animation: float 5s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    #next-button {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        background-color: #ff4081; /* Pink color for button */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div id="bus-stop">
+    <div id="couple">
+        <svg id="boy" xmlns="http://www.w3.org/2000/svg" width="100" height="200" viewBox="0 0 100 200">
+            <rect id="boy-shape" x="10" y="140" width="30" height="60" fill="#0000ff">
+                <animate attributeName="y" values="140;130;140" dur="2s" repeatCount="indefinite" />
+            </rect>
+            <circle cx="25" cy="120" r="20" fill="#fff">
+                <animate attributeName="cy" values="120;110;120" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="35" cy="110" r="5" fill="#000"/>
+            <rect x="15" y="160" width="20" height="10" fill="#000"/>
+        </svg>
+        <svg id="girl" xmlns="http://www.w3.org/2000/svg" width="100" height="200" viewBox="0 0 100 200">
+            <rect x="60" y="140" width="30" height="60" fill="#ff69b4">
+                <animate attributeName="y" values="140;130;140" dur="2s" repeatCount="indefinite" />
+            </rect>
+            <circle cx="75" cy="120" r="20" fill="#ffe4e1">
+                <animate attributeName="cy" values="120;110;120" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="65" cy="110" r="5" fill="#000"/>
+            <rect x="70" y="160" width="20" height="10" fill="#000"/>
+        </svg>
+    </div>
+    <div id="bus-stop-img">🚌</div>
+    <button id="next-button" onclick="window.location.href = 'next-page.html';">Next</button>
+</div>
+
+<script>
+    function createLeaf() {
+        const leaf = document.createElement('div');
+        leaf.className = 'leaf';
+        leaf.style.top = '-20px';
+        leaf.style.left = Math.random() * window.innerWidth + 'px';
+        leaf.innerHTML = '🍃';
+        document.body.appendChild(leaf);
+        setTimeout(() => {
+            leaf.remove();
+        }, 5000);
+    }
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.top = Math.random() * window.innerHeight + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createLeaf, 1000);
+    setInterval(createHeart, 2000);
+</script>
+</body>
+</html>
